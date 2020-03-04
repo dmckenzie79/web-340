@@ -24,6 +24,7 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 
+//path for routing
 app.get('/', function(req, res) {
     res.render('index', {
         message: 'The Morgan Logger is functioning!'

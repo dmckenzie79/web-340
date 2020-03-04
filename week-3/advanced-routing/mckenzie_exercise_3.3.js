@@ -22,6 +22,7 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 
+//path for routing, append a value 
 app.get('/:employeeId', function(request, response) {
     
     var employeeId = parseInt(request.params.employeeId, 10);
