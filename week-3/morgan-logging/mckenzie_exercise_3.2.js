@@ -1,3 +1,14 @@
+/*
+============================================
+; Title:  morgan-logging.js
+; Author: Professor Krasso
+; Date:   3 March 2020
+; Modified By: Diandra McKenzie
+; Description: Demonstrates how to configure the Morgan logger
+;===========================================
+*/
+
+//start program
 
 //require statements for required libraries
 var express = require("express");
@@ -19,6 +30,10 @@ app.get('/', function(req, res) {
     });
 });
 
+
+//port listening and logging
 http.createServer(app).listen(3000, function(){
     console.log('Application started and listening on port %s ', 3000);
 });
+
+//end program
