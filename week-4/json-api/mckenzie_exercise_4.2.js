@@ -8,12 +8,15 @@
 ;===========================================
 */
 
+//start program
+
+//require statements for required libraries
 var express = require("express");
 var http = require("http");
 
 var app = express();
 
-
+//Path for routing to the customer id
 app.get("/customer/:id", function(request, response) {
   var id = parseInt(request.params.id, 10);
 
@@ -24,6 +27,9 @@ app.get("/customer/:id", function(request, response) {
   });
 });
 
+//port listening and logging
 http.createServer(app).listen(8080, function() {
   console.log("Application started and is listening on port 8080");
 });
+
+//end program

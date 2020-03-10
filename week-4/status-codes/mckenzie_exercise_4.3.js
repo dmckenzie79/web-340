@@ -8,11 +8,15 @@
 ;===========================================
 */
 
+//start program
+
+//require statements for required libraries
 var express = require("express");
 var http = require("http");
 
 var app = express();
 
+//Path for routing if page not found
 app.get("/not-found", function(request, response) {
   response.status(404);
   response.json({
@@ -20,6 +24,7 @@ app.get("/not-found", function(request, response) {
   });
 });
 
+//Path for routing if page is OK
 app.get("/ok", function(request, response) {
   response.status(200);
   response.json({
@@ -27,6 +32,7 @@ app.get("/ok", function(request, response) {
   });
 });
 
+//Path for routing if page not implemented
 app.get("/not-implemented", function(request, response) {
   response.status(501);
   response.json({
@@ -34,6 +40,9 @@ app.get("/not-implemented", function(request, response) {
   });
 });
 
+//port listening and logging
 http.createServer(app).listen(3000, function() {
   console.log("Application started on port 3000!");
 });
+
+//end program
