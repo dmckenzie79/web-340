@@ -16,22 +16,22 @@ var http = require("http");
 
 var app = express();
 
-//Path for routing GET request
+//create GET request
 app.get("/", function(request, response) {
   response.send("API invoked as an HTTP GET request.");
 });
 
-//Path for routing PUT request
+//create PUT request
 app.put("/", function(request, response) {
   response.send("API invoked as an HTTP PUT request.");
 });
 
-//Path for routing POST request
+//create POST request
 app.post("/", function(request, response) {
   response.send("API invoked as an HTTP POST request");
 });
 
-//Path for routing DELETE request
+//create DELETE request
 app.delete("/", function(request, response) {
   response.send("API invoked as an HTTP DELETE request");
 });
