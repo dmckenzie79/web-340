@@ -1,6 +1,6 @@
 /*
 ============================================
-; Title:  app.js
+; Title:  if-else-render.js
 ; Author: Professor Krasso
 ; Date:   17 March 2020
 ; Modified By: Diandra McKenzie
