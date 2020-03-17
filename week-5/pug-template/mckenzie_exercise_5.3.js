@@ -1,44 +1,37 @@
 /*
 ============================================
-; Title:  app.js
+; Title:  pug-template.js
 ; Author: Professor Krasso
 ; Date:   17 March 2020
 ; Modified By: Diandra McKenzie
-; Description: Demonstrates EJS 'if-else-render' operations.
+; Description: Demonstrates the Pug view engine.
 ;===========================================
 */
 
 //start program
 
-//require
+// require
 var express = require('express');
 var http = require('http');
 var path = require('path');
+var pug = require('pug');
 
-//app functions
-
+// app functions
 var app = express();
 app.set('views', path.resolve(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'pug');
 
-//local artist array
-var artists = [
-    'Dali',
-    'Basquiat',
-    'Sherald',
-    'Munch'
-];
-
-//routes
+// route
 app.get('/', function(req, res) {
     res.render('index', {
-        names: artists
+        message: 'He who laughs last laughs best. -Unknown'
     });
 });
 
 //create server
-http.createServer(app).listen(3000, function() {
-    console.log('Application started and is listening on port 3000')
+http.createServer(app).listen(8000, function() {
+    console.log('Application started and listening on port 8000');
 });
+
 
 //end program
