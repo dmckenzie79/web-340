@@ -21,8 +21,10 @@ var mongoDB = 'mongodb+srv://dmck1979:Kirk1976@buwebdev-cluster-1-42fge.mongodb.
 
 //create connection
 mongoose.connect(mongoDB, {
-    useMongoClient: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
+
 mongoose.Promise - global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error: '));
