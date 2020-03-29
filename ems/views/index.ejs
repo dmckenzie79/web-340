@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-    <% include header %>
+    <%- include('header'); %>
+    
 
 <body>
-    <% include navbar %>
+    <%- include('navbar'); %>
 
     <!-- Main jumbotron for a primary marketing or call to action  -->
-    <div class="jumbotron">
+    <div class="jumbotron" style="background-color:#eef5e1;">
         <div class="container">
-            <h1 class="display-3">Hello, world!</h1>
+            <h1 class="display-3">Employee Management System</h1>
             <p>
                 This is a template for a simple marketing or informational website. It
                 includes a large callout called a jumbotron and three supporting
@@ -16,7 +17,7 @@
                 unique.  
             </p>
             <p>
-              <a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a>  
+              <a class="btn btn-info btn-lg" href="#" role="button">Learn more &raquo;</a>  
             </p>
         </div>
     </div>
@@ -24,23 +25,20 @@
     <div class="container">
         <!-- Example row of columns -->
         <div class="row">
-            <div class="col-md-4">
-                <h2>Heading</h2>
+            <div class="col-md-8">
+                <h2>Details about EMS</h2>
                 <p>
-                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
-                    tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-                    fermentum massa justo sit amet risus. Etiam porta sem malesuada
-                    magna mollis euismod. Donec sed odio dui. 
+                    This section will include more information about the Employee Management System. 
                 </p>
                 <p>
-                    <a class="btn btn-secondary" href="#" role="button">View details &rsaquo;</a>
+                    <a class="btn btn-info btn-sm" href="#" role="button">View details &rsaquo;</a>
                 </p>
             </div>
         </div>
         
-        <% include footer %>
+        <%- include('footer'); %>
     </div>
 
-    <% include scripts %>
+    <%- include('scripts'); %>
 </body>
 </html>
