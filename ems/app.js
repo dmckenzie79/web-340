@@ -16,6 +16,7 @@ var http = require("http");
 var path = require("path");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+var helmet = require("helmet");
 var Employee = require("./models/employee.js");
 
 // MongoDB compass connection
@@ -38,14 +39,24 @@ db.once("open", function() {
 //app functions
 var app = express();
 
+//set statements
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+//use statements
 app.use(logger('short'));
+app.use(helmet.xssFilter());
 
 //routes
 app.get('/', function(req, res) {
     res.render('index', {
         title: "Homepage"
+    });
+});
+
+app.get('/', function(req, res) {
+    res.render('index',{
+        message: "XSS Prevention Example"
     });
 });
 
