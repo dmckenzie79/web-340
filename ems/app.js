@@ -17,6 +17,10 @@ var path = require("path");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var helmet = require("helmet");
+//var bodyParser = require("body-parser");
+//var cookieParser = require("cookie-parser");
+//var csrf = require =("csurf");
+
 var Employee = require("./models/employee.js");
 
 // MongoDB compass connection
@@ -39,13 +43,28 @@ db.once("open", function() {
 //app functions
 var app = express();
 
-//set statements
-app.set('views', path.resolve(__dirname, 'views'));
-app.set('view engine', 'ejs');
+//setup csurf protection
+//var csurfProtection = csurf({cookie: true});
 
 //use statements
 app.use(logger('short'));
 app.use(helmet.xssFilter());
+//app.use(bodyParser.urlencoded({
+//    extended: true
+//}));
+//app.use(cookieParser());
+//app.use(csurfProtection);
+//app.use(function(req, res, next){
+//    var token = req.csurfToken();
+//    res.cookie('XSRF-TOKEN', token);
+//    res.locals.csurfToken = token;
+//    next();
+//});
+
+//set statements
+app.set('views', path.resolve(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 
 //routes
 app.get('/', function(req, res) {
@@ -59,6 +78,18 @@ app.get('/', function(req, res) {
         message: "XSS Prevention Example"
     });
 });
+
+//app.get('/', function(req, res) {
+//    res.render('index', {
+//        message: "New Employee Entry Page"
+//    });
+//});
+
+//app.post('/process', function(req, res) {
+//    console.log(req.body.txtName);
+//    res.redirect('/');
+//});
+
 
 //model
 var Employee = new Employee({
