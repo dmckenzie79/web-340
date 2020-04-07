@@ -78,7 +78,7 @@ app.get('/', function(req, res) {
     });
 });
 
-app.get('/', function(req, res) {
+app.get('/new', function(req, res) {
     res.render('index', {
         message: "New Fruit Entry Page"
     });
