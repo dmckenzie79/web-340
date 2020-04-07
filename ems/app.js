@@ -17,11 +17,10 @@ var path = require("path");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var helmet = require("helmet");
-//var bodyParser = require("body-parser");
-//var cookieParser = require("cookie-parser");
-//var csrf = require =("csurf");
-
-var Employee = require("./models/employee.js");
+var bodyParser = require("body-parser");
+var cookieParser = require("cookie-parser");
+var csrf = require("csurf");
+var Employee = require("../ems/models/employee");
 
 // MongoDB compass connection
 var mongoDB = 'mongodb+srv://dmck1979:Kirk1976@buwebdev-cluster-1-42fge.mongodb.net/test';
@@ -40,26 +39,26 @@ db.once("open", function() {
 
 });
 
+//setup csurf protection
+var csrfProtection = csrf({cookie: true});
+
 //app functions
 var app = express();
-
-//setup csurf protection
-//var csurfProtection = csurf({cookie: true});
 
 //use statements
 app.use(logger('short'));
 app.use(helmet.xssFilter());
-//app.use(bodyParser.urlencoded({
-//    extended: true
-//}));
-//app.use(cookieParser());
-//app.use(csurfProtection);
-//app.use(function(req, res, next){
-//    var token = req.csurfToken();
-//    res.cookie('XSRF-TOKEN', token);
-//    res.locals.csurfToken = token;
-//    next();
-//});
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(cookieParser());
+app.use(csrfProtection);
+app.use(function(req, res, next){
+    var token = req.csrfToken();
+    res.cookie('XSRF-TOKEN', token);
+    res.locals.csrfToken = token;
+    next();
+});
 
 //set statements
 app.set('views', path.resolve(__dirname, 'views'));
@@ -79,16 +78,16 @@ app.get('/', function(req, res) {
     });
 });
 
-//app.get('/', function(req, res) {
-//    res.render('index', {
-//        message: "New Employee Entry Page"
-//    });
-//});
+app.get('/', function(req, res) {
+    res.render('index', {
+        message: "New Fruit Entry Page"
+    });
+});
 
-//app.post('/process', function(req, res) {
-//    console.log(req.body.txtName);
-//    res.redirect('/');
-//});
+app.post('/process', function(req, res) {
+    console.log(req.body.txtName);
+    res.redirect('/');
+});
 
 
 //model
