@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-app.get("/list",function(req,res){
-    Employee.find({},function(error,employees){
-        if(error)throw error;
-        
-        res.render("list",{
-            title:"EmployeeList",
-            employees:employees
-        });
-    });
-});
-<%if(fruits.length){%>
+<%- include('header'); %>
+
+<body>
+<%- include('navbar'); %>
+
+<%if(employees.length){%>
     <h2>‐‐ EmployeeListing ‐‐</h2><br/>
-    <a href="new.ejs">AddNew</a>
+    <a href="/new">AddNew</a>
     <table class="table table‐hover">
         <thead class="thead‐dark">
             <tr>
@@ -29,7 +24,7 @@ app.get("/list",function(req,res){
             <%})%>
         </table>
         <%}else{%>
-            No entries!<a href="new.ejs">Add one!</a>
+            No entries!<a href="/new">Add one!</a>
             <%}%>
 
 <%- include('scripts'); %>
