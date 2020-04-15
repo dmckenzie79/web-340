@@ -2,7 +2,7 @@
 ============================================
 ; Title:  app.js
 ; Author: Professor Krasso
-; Date:   17 March 2020
+; Date:   15 April 2020
 ; Modified By: Diandra McKenzie
 ; Description: Demonstrates EJS layouts.
 ;===========================================
@@ -159,7 +159,7 @@ app.get("/list",function(req,res){
  * URL: localhost:8080/view/:queryName
  */
 app.get('/view/:queryName', function(req, res) {
-    var queryName = req.params['queryName'];
+    var queryName = req.params.queryName;
   
     Employee.find({'name': queryName}, function(error, employees) {
       if (error) {
@@ -174,7 +174,7 @@ app.get('/view/:queryName', function(req, res) {
             employee: employees
           });
         } else {
-          res.redirect('/');
+          res.redirect('/list');
         }
       }
     });
